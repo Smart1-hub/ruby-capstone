@@ -35,5 +35,5 @@ class Item
     Time.now.year - @publish_date.year > 10
   end
 
-  private 
+  private
 end
