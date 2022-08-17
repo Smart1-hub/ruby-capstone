@@ -18,4 +18,12 @@ describe MusicAlbum do
     music_album = MusicAlbum.new(false, '04-01-2010')
     music_album.archived.should eq false
   end
+
+  it 'Store MusicAlbum in json file' do
+    music_album = MusicAlbum.new(true, '04-10-2020')
+    save_music_album(music_album)
+    expect(File.exist?('./music_album/music_albums.json') &&
+             File.read('./music_album/music_albums.json') != '').to eq true
+    File.write('./music_album/music_albums.json', '')
+  end
 end
