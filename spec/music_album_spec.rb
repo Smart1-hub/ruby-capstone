@@ -1,5 +1,6 @@
 require_relative '../music_album/music_album'
 require_relative '../music_album/controller'
+require 'rspec'
 
 describe MusicAlbum do
   include MusicAlbumController

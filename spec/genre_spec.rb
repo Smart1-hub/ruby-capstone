@@ -1,6 +1,7 @@
 require_relative '../genre/genre'
 require_relative '../genre/controller'
 require_relative '../music_album/music_album'
+require 'rspec'
 
 describe Genre do
   include GenreController
