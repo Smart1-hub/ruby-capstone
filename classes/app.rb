@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/MethodLength
+
 require_relative 'classes/book'
 require_relative 'classes/label'
 require_relative 'data/data_book'
@@ -131,3 +133,5 @@ class App
     load_books_and_labels @all_books, @all_labels
   end
 end
+
+# rubocop:enable Metrics/MethodLength
