@@ -27,10 +27,10 @@ or alternatively you can copy and paste the commands in
 - Twitter: [@ademola_adebayo](https://twitter.com/ademola_adebayo)
 - LinkedIn: [Ademola Adebayo](https://www.linkedin.com/in/ademola-adebayo)
 
-👤 **Felix Odette**
-- Github: []()
-- Twitter: []()
-- LinkedIn: []()
+👤 **Felix Odete**
+- Github: [@felixodette](https://github.com/felixodette)
+- Twitter: [@Odette3000](https://twitter.com/Odette3000)
+- LinkedIn: [Felix Odete](https://www.linkedin.com/in/)
 
 👤 **Kwentsir Joseph**
 - Github: []()
