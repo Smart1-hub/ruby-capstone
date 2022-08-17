@@ -13,4 +13,9 @@ describe MusicAlbum do
     music_album.move_to_archive
     music_album.archived.should eq true
   end
+
+  it 'archived should be false' do
+    music_album = MusicAlbum.new(false, '04-01-2010')
+    music_album.archived.should eq false
+  end
 end
