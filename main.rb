@@ -1,4 +1,6 @@
 class Main
-  def initialize
+  def user_input(message)
+    print message
+    gets.chomp
   end
 end
