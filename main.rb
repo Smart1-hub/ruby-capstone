@@ -43,9 +43,6 @@ class Main
 
       options(input)
     end
-    store_books(@books)
-    store_labels(@labels)
-    store_genres(@genres)
   end
 
   def options(input)
