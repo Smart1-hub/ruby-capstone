@@ -42,7 +42,7 @@ def option(input)
   when '9'
     create_game
   else
-    puts "Nothing else please..."
+    puts 'Nothing else please...'
   end
 end
 
