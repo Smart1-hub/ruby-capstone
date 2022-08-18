@@ -1,16 +1,15 @@
 require_relative '../music_album/music_album'
 require_relative '../music_album/controller'
-require 'rspec'
 
 describe MusicAlbum do
-  include MusicAlbumController
-  it 'Should be a music album instance' do
-    music_album = MusicAlbum.new(true, '04-01-2020')
+  include MusicAlbumsController
+  it 'Should be an instance of music_album' do
+    music_album = MusicAlbum.new(true, '04-01-2010')
     expect(music_album).to be_instance_of MusicAlbum
   end
 
-  it 'Archived should be true' do
-    music_album = MusicAlbum.new(true, '04-01-2020')
+  it 'archived should be true' do
+    music_album = MusicAlbum.new(true, '04-01-2010')
     music_album.move_to_archive
     music_album.archived.should eq true
   end
@@ -20,7 +19,7 @@ describe MusicAlbum do
     music_album.archived.should eq false
   end
 
-  it 'Store MusicAlbum in json file' do
+  it 'Should store MusicAlbum in json file' do
     music_album = MusicAlbum.new(true, '04-10-2020')
     save_music_album(music_album)
     expect(File.exist?('./music_album/music_albums.json') &&

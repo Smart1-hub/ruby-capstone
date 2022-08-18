@@ -3,7 +3,7 @@ class Genre
 
   def initialize(name, id = nil)
     @name = name
-    @id = id || Random.rand(1..1000)
+    @id = id || Random.rand(1..100)
     @items = []
   end
 

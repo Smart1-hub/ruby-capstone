@@ -1,6 +1,6 @@
 require 'json'
 
-module GenreController
+module GenresController
   def store_genres(genres)
     return if genres.empty?
 
