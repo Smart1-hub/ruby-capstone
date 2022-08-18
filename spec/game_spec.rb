@@ -1,3 +1,4 @@
+require './classes/item'
 require './classes/game'
 require 'date'
 
