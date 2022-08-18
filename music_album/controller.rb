@@ -1,6 +1,6 @@
 require 'json'
 
-module MusicAlbumController
+module MusicAlbumsController
   def save_music_album(album)
     File.new('./music_album/music_albums.json', 'w+') unless File.exist?('./music_album/music_albums.json')
 
