@@ -1,1 +1,4 @@
-# rubocop:disable Lint/EmptyFile
+class Main
+  def initialize
+  end
+end
