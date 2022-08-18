@@ -71,7 +71,7 @@ class App
 
   def list_authors
     if @authors.empty?
-      puts 'Authors Catalog is empty! Choose (6) to add an author: '
+      puts 'Authors Catalog is empty! Choose (A) to add an author: '
     else
       @authors.each { |author| puts "First Name: #{author.first_name}, Last Name:  #{author.last_name}" }
     end
@@ -79,7 +79,7 @@ class App
 
   def list_games
     if @games.empty?
-      puts 'Games Catalog is empty! Choose (5) to add a game.'
+      puts 'Games Catalog is empty! Choose (G) to add a game.'
     else
       @games.each do |game|
         puts "Multiplayer:  #{game.multiplayer}, last played at:  #{game.last_played_at},
@@ -122,26 +122,6 @@ class App
     puts
     puts
     sleep 0.75
-  end
-
-  def create_author
-    pirnt 'Enter First Name: '
-    first_name = gets.chomp
-    print 'Enter Last Name: '
-    last_name = gets.chomp
-    author = Author.new(first_name, last_name)
-    create_author(author)
-  end
-
-  def create_game
-    print 'Is game a Multiplayer Yes(y) pr No(n) -> (Y/N): '
-    multiplayer = gets.chomp.downcase == 'y' ? 'Yes' : 'No'
-    print 'Enter published date, format -> DD-MM-YYYY: '
-    publish_date = gets.chomp
-    print 'Enter date last played, format -> DD-MM-YYYY: '
-    last_played_at = gets.chomp
-    game = Game.new(publish_date, multiplayer, last_played_at)
-    create_game(game)
   end
 
   def save_files
