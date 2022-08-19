@@ -3,10 +3,10 @@ require 'date'
 
 describe Book do
   before :each do
-    @book_one = Book.new 'Gideon', 'bad', Date.parse('12-07-2000')
-    @book_two = Book.new 'Joseph', 'good', Date.parse('12-07-1995')
-    @book_three = Book.new 'Felix', 'good', Date.parse('12-07-2019')
-    @book_four = Book.new 'Publisher', 'bad', Date.parse('12-09-2004')
+    @book_one = Book.new 'Gideon', 'bad', '12-07-2000'
+    @book_two = Book.new 'Joseph', 'good', '12-07-1995'
+    @book_three = Book.new 'Felix', 'good', '12-07-2019'
+    @book_four = Book.new 'Publisher', 'bad', '12-09-2004'
   end
 
   it 'The can_be_achived? method returns true if difference between current date
