@@ -77,6 +77,8 @@ class Main
       add_music_album
     when 9
       add_game
+    when 10
+      return
     else
       puts 'Please choose a valid number!'
     end
