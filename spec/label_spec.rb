@@ -8,7 +8,7 @@ describe Label do
   end
 
   it 'The add_item method should add an book item to the label
-    and total of books with the label must be 1' do
+    and total of books in with the label must be 1' do
     @label.add_item(@book)
     expect(@label.items.length).to eq 1
   end
