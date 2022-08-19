@@ -1,6 +1,6 @@
 require 'json'
-require_relative '../base/game'
-require_relative '../base/author'
+require_relative '../classes/game'
+require_relative '../classes/author'
 
 def load_manager(gamestore, authorstore) # rubocop:todo Metrics/MethodLength
   storage = './data/games.json'
