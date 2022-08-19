@@ -4,8 +4,8 @@ module LabelsController
   def store_labels(labels)
     return if labels.empty?
 
-    file = './label/labels.json'
-    File.new('./label/labels.json', 'w+') unless File.exist?(file)
+    file = './data/labels.json'
+    File.new('./data/labels.json', 'w+') unless File.exist?(file)
 
     data = []
 
@@ -17,7 +17,7 @@ module LabelsController
 
   def load_labels
     data = []
-    file = './label/labels.json'
+    file = './data/labels.json'
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |label|
