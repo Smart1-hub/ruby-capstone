@@ -1,4 +1,4 @@
-require_relative 'item'
+require_relative '../item'
 require 'date'
 
 class Game < Item
@@ -9,8 +9,6 @@ class Game < Item
     @multiplayer = multiplayer
     @last_played_at = last_played_at
   end
-
-  private
 
   def can_be_archived?
     Time.now.year - Date.parse(@publish_date).year > 10 && Time.now.year - Date.parse(@last_played_at).year > 2

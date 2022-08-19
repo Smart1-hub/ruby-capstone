@@ -1,33 +1,4 @@
-require_relative 'classes/game'
-require_relative 'data/game_data'
-require_relative 'classes/book'
-require_relative 'data/data_book'
-require_relative 'music_album/music_album'
-require_relative 'music_album/controller'
-require_relative 'classes/author'
-require_relative 'data/author_data'
-require_relative 'classes/label'
-require_relative 'genre/genre'
-require_relative 'genre/controller'
-require_relative 'data/label_data'
 
-class Main
-  include MusicAlbumsController
-  include GenresController
-  include LabelsController
-  include AuthorsController
-  include BooksController
-
-  def initialize
-    @genres = load_genres
-    @labels = load_labels
-    @books = load_books
-  end
-
-  def user_input(message)
-    print message
-    gets.chomp
-  end
 
   def start
     puts '-' * 45
@@ -84,3 +55,7 @@ class Main
     end
   end
 end
+
+main
+
+# rubocop:enable Metrics
