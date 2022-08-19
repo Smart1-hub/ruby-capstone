@@ -1,6 +1,7 @@
 # ruboscop ig
 
-require './classes/book'
+require_relative '../classes/book'
+require_relative '../controllers/book_controller'
 require 'date'
 
 describe Book do

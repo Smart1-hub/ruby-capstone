@@ -1,5 +1,5 @@
-require './classes/item'
-require './classes/game'
+require_relative '../classes/game'
+require_relative '../controllers/game_controller'
 require 'date'
 
 describe Game do

@@ -1,5 +1,5 @@
-require './classes/item'
-require './classes/author'
+require_relative '../classes/author'
+require_relative '../controllers/author_controller'
 require 'date'
 
 describe Author do

@@ -2,12 +2,12 @@ require 'json'
 
 module MusicAlbumsController
   def save_music_album(album)
-    File.new('./music_album/music_albums.json', 'w+') unless File.exist?('./music_album/music_albums.json')
+    File.new('./data/music_albums.json', 'w+') unless File.exist?('./data/music_albums.json')
 
-    if File.empty?('./music_album/music_albums.json')
+    if File.empty?('./data/music_albums.json')
       music_albums = []
     else
-      data = File.read('./music_album/music_albums.json').split
+      data = File.read('./data/music_albums.json').split
       music_albums = JSON.parse(data.join)
     end
 
@@ -15,18 +15,18 @@ module MusicAlbumsController
                         'author' => album.author, 'music_label' => album.label, 'music_genre' => album.genre,
                         'archived' => album.archived })
 
-    File.write('./music_album/music_albums.json', music_albums.to_json)
+    File.write('./data/music_albums.json', music_albums.to_json)
   end
 
   def list_music_albums
     puts '-' * 50
-    File.new('./music_album/music_albums.json', 'w+') unless File.exist?('./music_album/music_albums.json')
+    File.new('./data/music_albums.json', 'w+') unless File.exist?('./data/music_albums.json')
 
-    if File.empty?('./music_album/music_albums.json')
+    if File.empty?('./data/music_albums.json')
       puts 'The music albums list is empty'
     else
       puts '🎶  Music albums list:'
-      data = File.read('./music_album/music_albums.json').split
+      data = File.read('./data/music_albums.json').split
       music_albums = JSON.parse(data.join)
       music_albums.each_with_index do |music_album, index|
         puts "#{index + 1}-[Music album] ID: #{music_album['id']} | On spotify: #{music_album['on_spotify']} | " \

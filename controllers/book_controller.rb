@@ -4,8 +4,8 @@ module BooksController
   def store_books(books)
     return if books.empty?
 
-    file = './book/books.json'
-    File.new('./book/books.json', 'w+') unless File.exist?(file)
+    file = './data/books.json'
+    File.new('./data/books.json', 'w+') unless File.exist?(file)
 
     data = []
 
@@ -18,7 +18,7 @@ module BooksController
 
   def load_books
     data = []
-    file = './book/books.json'
+    file = './data/books.json'
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |book|

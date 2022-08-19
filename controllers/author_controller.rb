@@ -2,7 +2,7 @@ require 'json'
 
 module AuthorsController
   def add_author(author)
-    File.new('./data/authors.json', 'w+') unless File.exist?('./data/authors.json')
+    File.new('./data/authors.json', 'w+') unless File.exist?('../data/authors.json')
 
     if File.empty?('./data/authors.json')
       authors = []
@@ -18,7 +18,7 @@ module AuthorsController
 
   def list_authors
     puts '-' * 50
-    File.new('./data/authors.json', 'w+') unless File.exist?('./data/authors.json')
+    File.new('./data/authors.json', 'w+') unless File.exist?('../data/authors.json')
 
     if File.empty?('./data/authors.json')
       puts 'The authors list is empty'
@@ -27,7 +27,7 @@ module AuthorsController
       authors = JSON.parse(data.join)
       puts '🤵 Authors list:'
       authors.each_with_index do |author, index|
-        puts "#{index + 1}-[Author] First name: #{author['first_name']} | Last name: #{author['last_name']}"
+        puts "#{index + 1}-[Author] First Name: #{author['first_name']} | Last Name: #{author['last_name']}"
       end
     end
   end
