@@ -1,3 +1,5 @@
+# ruboscop ig
+
 require './classes/book'
 require 'date'
 
