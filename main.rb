@@ -1,28 +1,28 @@
-require_relative 'classes/game'
-require_relative 'controllers/game_controller'
-require_relative 'classes/book'
-require_relative 'controllers/book_controller'
-require_relative 'classes/album'
-require_relative 'controllers/album_controller'
-require_relative 'classes/author'
-require_relative 'controllers/author_controller'
-require_relative 'classes/genre'
-require_relative 'controllers/genre_controller'
-require_relative 'classes/label'
-require_relative 'controllers/label_controller'
+require_relative 'game/game'
+require_relative 'game/game_controller'
+require_relative 'book/book'
+require_relative 'book/book_controller'
+require_relative 'music_album/music_album'
+require_relative 'music_album/controller'
+require_relative 'author/author'
+require_relative 'author/author_controller'
+require_relative 'label/label'
+require_relative 'label/label_controller'
+require_relative 'genre/genre'
+require_relative 'genre/controller'
 
 class Main
-  include MusicAlbumsController
-  include GenresController
-  include LabelsController
-  include AuthorsController
   include BooksController
   include GamesController
+  include MusicAlbumsController
+  include LabelsController
+  include GenresController
+  include AuthorsController
 
   def initialize
-    @genres = load_genres
-    @labels = load_labels
     @books = load_books
+    @labels = load_labels
+    @genres = load_genres
   end
 
   def user_input(message)
@@ -31,10 +31,10 @@ class Main
   end
 
   def start
-    puts '-' * 45
+    puts '-' * 50
     puts '⭐  Welcome to your catalog of things! ⭐'
     loop do
-      puts '-' * 45
+      puts '-' * 50
       puts '
           1- List all books
           2- List all music albums
@@ -53,9 +53,9 @@ class Main
 
       options(input)
     end
+    store_books(@books)
     store_labels(@labels)
     store_genres(@genres)
-    store_books(@books)
   end
 
   def options(input)
@@ -78,8 +78,6 @@ class Main
       add_music_album
     when 9
       add_game
-    when 10
-      nil
     else
       puts 'Please choose a valid number!'
     end

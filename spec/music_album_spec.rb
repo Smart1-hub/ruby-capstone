@@ -1,5 +1,5 @@
-require_relative '../classes/album'
-require_relative '../controllers/album_controller'
+require_relative '../music_album/music_album'
+require_relative '../music_album/controller'
 
 describe MusicAlbum do
   include MusicAlbumsController

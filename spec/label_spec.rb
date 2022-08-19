@@ -1,15 +1,28 @@
-require './classes/label'
-require './classes/book'
+require_relative '../label/label'
+require_relative '../label/label_controller'
+require_relative '../book/book'
+require 'yaml'
 
 describe Label do
-  before :each do
-    @label = Label.new 'True Stories', 'Blue'
-    @book = Book.new 'Roland', 'bad', '12-07-2000'
+  include LabelsController
+  it 'item should be added to array' do
+    label = Label.new('label')
+    book = Book.new('20/10/2010', 'publisher', 'good')
+    label.add_item(book)
+    expect(label.items).to contain_exactly(book)
   end
 
-  it 'The add_item method should add an book item to the label
-    and total of books with the label must be 1' do
-    @label.add_item(@book)
-    expect(@label.items.length).to eq 1
+  it "item\'s label should be set to current label\'s name" do
+    label = Label.new('label')
+    book = Book.new('20/10/2010', 'publisher', 'good')
+    label.add_item(book)
+    book.label.should eql 'label'
+  end
+
+  it 'should store labels' do
+    labels = [Label.new('label1'), Label.new('label2')]
+    store_labels(labels)
+    expect(File.exist?('./label/labels.json') && File.read('./label/labels.json') != '').to eq true
+    File.write('./label/labels.json', '')
   end
 end

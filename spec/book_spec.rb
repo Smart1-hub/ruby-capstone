@@ -1,38 +1,32 @@
-# ruboscop ig
-
-require_relative '../classes/book'
-require_relative '../controllers/book_controller'
-require 'date'
+require_relative '../book/book'
+require_relative '../book/book_controller'
+require 'yaml'
 
 describe Book do
-  before :each do
-    @book_one = Book.new 'Ademola', 'bad', '12-07-2000'
-    @book_two = Book.new 'Joseph', 'good', '12-07-1995'
-    @book_three = Book.new 'Felix', 'good', '12-07-2019'
-    @book_four = Book.new 'Publisher', 'bad', '12-09-2004'
+  include BooksController
+
+  it 'archived should be true' do
+    book = Book.new('20/10/2010', 'publisher', 'good')
+    book.move_to_archive
+    book.archived.should eq true
   end
 
-  it 'The can_be_achived? method returns true if difference between current date
-    and publish date is greater than 10 and cover_state equals to "bad"' do
-    @book_one.move_to_archive
-    expect(@book_one.archived).to be true
+  it 'archived should be true' do
+    book = Book.new('20/10/2020', 'publisher', 'bad')
+    book.move_to_archive
+    book.archived.should eq true
   end
 
-  it 'The can_be_achived? method returns true if difference between current
-    date and publish date is greater than 10 and cover_state equals to "good"' do
-    @book_two.move_to_archive
-    expect(@book_two.archived).to be true
+  it 'archived should be false' do
+    book = Book.new('20/10/2020', 'publisher', 'good')
+    book.move_to_archive
+    book.archived.should eq false
   end
 
-  it 'The can_be_achived? method returns false if difference between current
-    date and publish date is less than 10 and cover_state equals to "good"' do
-    @book_three.move_to_archive
-    expect(@book_three.archived).to be false
-  end
-
-  it 'The can_be_achived? method returns false if difference between current
-    date and publish date is less than 10 and cover_state equals to "bad"' do
-    @book_four.move_to_archive
-    expect(@book_four.archived).to be true
+  it 'should store books' do
+    books = [Book.new('20/10/2020', 'publisher', 'good'), Book.new('10/2/2021', 'publisher', 'bad')]
+    store_books(books)
+    expect(File.exist?('./book/books.json') && File.read('./book/books.json') != '').to eq true
+    File.write('./book/books.json', '')
   end
 end

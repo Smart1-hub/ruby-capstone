@@ -1,18 +1,28 @@
-require_relative '../classes/game'
-require_relative '../controllers/game_controller'
-require 'date'
+require_relative '../game/game'
+require_relative '../game/game_controller'
 
 describe Game do
-  before(:all) do
-    @game = Game.new('17-08-2000', 'Yes', '17-08-2013')
+  include GamesController
+  it 'Should be an instance of Game' do
+    author = Game.new(true, '04-12-2011', '09-10-2017')
+    expect(author).to be_instance_of Game
   end
 
-  context 'When new Game is created' do
-    it 'Should be of Game instance' do
-      expect(@game).to be_instance_of Game
-    end
-    it 'Should be archived when older than 10 years and last_played > 2 years' do
-      expect(@game.can_be_archived?).to be_truthy
-    end
+  it 'archived should be true' do
+    game = Game.new(true, '04-12-2017', '09-10-2010')
+    game.move_to_archive
+    game.archived.should eq true
+  end
+
+  it 'archived should be true' do
+    game = Game.new(true, '04-12-2011', '09-10-2022')
+    game.archived.should eq false
+  end
+
+  it 'Should store game in json file' do
+    game = Game.new(true, '04-12-2011', '09-10-2017')
+    save_game(game)
+    expect(File.exist?('./game/games.json') && File.read('./game/games.json') != '').to eq true
+    File.write('./game/games.json', '')
   end
 end

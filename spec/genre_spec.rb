@@ -1,7 +1,6 @@
-require_relative '../classes/genre'
-require_relative '../controllers/genre_controller'
-require_relative '../classes/album'
-require_relative '../controllers/album_controller'
+require_relative '../genre/genre'
+require_relative '../genre/controller'
+require_relative '../music_album/music_album'
 
 describe Genre do
   include GenresController

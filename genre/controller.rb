@@ -4,8 +4,8 @@ module GenresController
   def store_genres(genres)
     return if genres.empty?
 
-    file = './data/genres.json'
-    File.new('./data/genres.json', 'w+') unless File.exist?(file)
+    file = './genre/genres.json'
+    File.new('./genre/genres.json', 'w+') unless File.exist?(file)
     data = []
     genres.each do |genre|
       data << {
@@ -18,7 +18,7 @@ module GenresController
 
   def load_genres
     data = []
-    file = './data/genres.json'
+    file = './genre/genres.json'
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |genre|
