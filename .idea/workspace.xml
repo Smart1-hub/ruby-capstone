@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f78fe9c0-75e7-47f6-97c0-ed1065790732" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/classes/game.rb" beforeDir="false" afterPath="$PROJECT_DIR$/classes/game.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/game_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/game_controller.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +38,7 @@
     "nodejs_package_manager_path": "npm",
     "ruby.rails.projectView.checked": "true",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "two.files.diff.last.used.file": "/Users/felixodette/Documents/GitHub/Catalog-of-My-Things/game/game.rb"
+    "two.files.diff.last.used.file": "/Users/felixodette/Documents/GitHub/Catalog-of-My-Things/main.rb"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -345,7 +346,7 @@
       <workItem from="1660897075525" duration="766000" />
       <workItem from="1660898132422" duration="5000" />
       <workItem from="1660898144066" duration="40000" />
-      <workItem from="1660898246271" duration="1804000" />
+      <workItem from="1660898246271" duration="3045000" />
     </task>
     <servers />
   </component>
@@ -368,6 +369,6 @@
     <SUITE FILE_PATH="coverage/ruby_capstone@book.rcov" NAME="book Coverage Results" MODIFIED="1660821430594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="ruby-capstone" />
     <SUITE FILE_PATH="coverage/ruby_capstone@genre_spec.rcov" NAME="genre_spec Coverage Results" MODIFIED="1660730106745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spec" />
     <SUITE FILE_PATH="coverage/ruby_capstone@music_album.rcov" NAME="music_album Coverage Results" MODIFIED="1660729956218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/music_album" />
-    <SUITE FILE_PATH="coverage/ruby_capstone@app.rcov" NAME="app Coverage Results" MODIFIED="1660918523370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="ruby-capstone" />
+    <SUITE FILE_PATH="coverage/ruby_capstone@app.rcov" NAME="app Coverage Results" MODIFIED="1660919819627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="ruby-capstone" />
   </component>
 </project>
