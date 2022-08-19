@@ -10,14 +10,17 @@ To launch the project locally:
 
 ### Step 1:
 Clone this repo locally using git in the command line and the following command
-> https://github.com/Epaltechs/TDD-Project.git
+> https://github.com/Smart1-hub/ruby-capstone.git
 Alternatively, you can just download the complete zip file and extract the folder in your directory
 
 ### Step 2:
 In the project directory, you can run:
-> ruby solver.rb
+> ruby main.rb
 or alternatively you can copy and paste the commands in
 > irb
+
+## Project Presentation
+[Follow_this_link](https://drive.google.com/file/d/1Jzlqzol56_bPl8tWKAgU_Dvhn_nkMLU3/view?usp=sharing)
 
 ## 👤 Authors
 
@@ -33,13 +36,13 @@ or alternatively you can copy and paste the commands in
 - LinkedIn: [Felix Odete](https://www.linkedin.com/in/)
 
 👤 **Kwentsir Joseph**
-- Github: []()
-- Twitter: []()
-- LinkedIn: []()
+- Github: [Github](https://github.com/kwentsir)
+- Twitter: [Twitter](htt://twitter.com/jkwentsir)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/josephkwen)
 
 ## :handshake: Contributing
 - Contributions, issues, and feature requests are welcome!
-- Feel free to check the [issues page](https://github.com/Epaltechs/TDD-Project/issues).
+- Feel free to check the [issues page](https://github.com/Smart1-hub/ruby-capstone/issues).
 
 
 ## Show your support
