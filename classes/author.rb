@@ -1,4 +1,6 @@
 require 'json'
+require_relative '../item'
+
 class Author
   attr_accessor :id, :first_name, :last_name, :items
 
