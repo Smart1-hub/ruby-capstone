@@ -3,8 +3,8 @@ require './classes/game'
 
 describe Author do
   before :all do
-    @game = Game.new('Ali', '2019-01-01', '2014-12-14')
-    @author = Author.new('Drogba', 'Didier')
+    @game = Game.new('Jcck', '2019-01-01', '2014-12-14')
+    @author = Author.new('Nicolas', 'Johnson')
   end
   context 'When creating @author, an instance of class Author' do
     it 'takes two parameters and return a Label object' do

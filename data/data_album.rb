@@ -1,34 +1,56 @@
 require 'json'
+require_relative '../classes/genre'
+require_relative '../classes/music_album'
+require 'date'
 
-module AuthorsController
-  def add_author(author)
-    File.new('./data/authors.json', 'w+') unless File.exist?('./data/authors.json')
+def load_album_genre(myalbum, mygenre)
+  if File.exist?('./data/albums.json')
+    file = File.open('./data/albums.json')
 
-    if File.empty?('./data/authors.json')
-      authors = []
+    if file.size.zero?
+      my_albums << []
+      my_genres << []
     else
-      data = File.read('./data/authors.json').split
-      authors = JSON.parse(data.join)
-    end
+      albums = JSON.parse(File.read('./data/albums.json'))
 
-    authors.push({ id: author.id, first_name: author.first_name, last_name: author.last_name })
+      albums.each do |album|
+        genre = Genre.new(album['genre'])
+        album = MusicAlbum.new(Date.parse(album['published']), album['name'], album['spotify'])
+        myalbum << album
+        mygenre << genre
 
-    File.write('./data/authors.json', authors.to_json)
-  end
-
-  def list_authors
-    puts '-' * 50
-    File.new('./data/authors.json', 'w+') unless File.exist?('./data/authors.json')
-
-    if File.empty?('./data/authors.json')
-      puts 'The authors list is empty'
-    else
-      data = File.read('./data/authors.json').split
-      authors = JSON.parse(data.join)
-      puts '🤵 Authors list:'
-      authors.each_with_index do |author, index|
-        puts "#{index + 1}-[Author] First name: #{author['first_name']} | Last name: #{author['last_name']}"
+        genre.add_item(album)
       end
     end
+    file.close
+  else
+    myalbum << []
+    mygenre << []
   end
+end
+
+def save_album(date, name, genre, on_spotify)
+  obj = {
+    published: date,
+    name: name,
+    genre: genre,
+    spotify: on_spotify
+  }
+
+  return unless File.exist?('./data/albums.json')
+
+  file = File.open('./data/albums.json')
+
+  if file.size.zero?
+    album = [obj]
+  else
+    album = JSON.parse(File.read('./data/albums.json'))
+    album << obj
+  end
+
+  file.close
+
+  myfile = File.open('./data/albums.json', 'w')
+  myfile.write(JSON.pretty_generate(album))
+  myfile.close
 end
