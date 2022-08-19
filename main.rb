@@ -9,13 +9,19 @@ require_relative 'data/author_data'
 require_relative 'classes/label'
 require_relative 'genre/genre'
 require_relative 'genre/controller'
+require_relative 'data/label_data'
 
 class Main
   include MusicAlbumsController
   include GenresController
+  include LabelsController
+  include AuthorsController
+  include BooksController
 
   def initialize
     @genres = load_genres
+    @labels = load_labels
+    @books = load_books
   end
 
   def user_input(message)
@@ -46,7 +52,9 @@ class Main
 
       options(input)
     end
+    store_labels(@labels)
     store_genres(@genres)
+    store_books(@books)
   end
 
   def options(input)

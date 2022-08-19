@@ -1,56 +1,69 @@
 require 'json'
-require_relative '../classes/book'
-require_relative '../classes/label'
 
-def load_books_and_labels(mybook, mylabel)
-  if File.exist?('./data/books.json')
-    file = File.open('./data/books.json')
+module BooksController
+  def store_books(books)
+    return if books.empty?
 
-    if file.size.zero?
-      mybook << []
-      mylabel << []
+    file = './book/books.json'
+    File.new('./book/books.json', 'w+') unless File.exist?(file)
+
+    data = []
+
+    books.each do |book|
+      data << { id: book.id, publish_date: book.publish_date, publisher: book.publisher, cover_state: book.cover_state,
+                archived: book.archived, genre: book.genre, author: book.author, label: book.label }
+    end
+    File.write(file, JSON.generate(data))
+  end
+
+  def load_books
+    data = []
+    file = './book/books.json'
+    return data unless File.exist?(file) && File.read(file) != ''
+
+    JSON.parse(File.read(file)).each do |book|
+      new_book = Book.new(book['publish_date'], book['publisher'], book['cover_state'], book['id'],
+                          archived: book['archived'])
+      new_book.genre = Genre.new(book['genre'])
+      new_book.author = Author.new(book['author']['first_name'], book['author']['last_name'])
+      new_book.label = Label.new(book['label'])
+      data << new_book
+    end
+
+    data
+  end
+
+  def add_book()
+    author_f = user_input("Author's first name: ")
+    author_l = user_input("Author's last name: ")
+    author = Author.new(author_f, author_l)
+    publish_date = user_input("Book\'s publish date: ")
+    publisher = user_input("Book\'s publisher: ")
+    cover_state = user_input("Book\'s cover state [good, bad]: ")
+    genre = Genre.new(user_input("Book\'s genre: "))
+    label = Label.new(user_input("Book\'s label: "))
+    new_book = Book.new(publish_date, publisher, cover_state)
+    new_book.genre = genre
+    new_book.label = label
+    new_book.author = author
+    new_book.move_to_archive
+    @books << new_book
+    @labels << label
+    @genres << genre
+    add_author(author)
+    puts "The book (by #{author_l}) has been created successfully ✅"
+  end
+
+  def list_books
+    puts '-' * 50
+    if @books.empty?
+      puts 'The books list is empty'
     else
-      books = JSON.parse(File.read('./data/books.json'))
-
-      books.each do |book|
-        label = Label.new(book['book_label_title'], book['book_label_color'])
-        book = Book.new(book['book_publisher'], book['book_cover_state'], book['book_publish_date'])
-        mybook << book
-        mylabel << label
-
-        label.add_item(book)
+      puts '📚 Books list:'
+      @books.each_with_index do |book, index|
+        puts "#{index + 1}-[Book] ID: #{book.id} | Publisher: #{book.publisher} | " \
+             "Publish date: #{book.publish_date} | Cover state: #{book.cover_state} | Archived: #{book.archived}"
       end
     end
-    file.close
-  else
-    mybook << []
-    mylabel << []
   end
-end
-
-def save_book(book_publisher, book_cover_state, book_label_title, book_label_color, book_publish_date)
-  obj = {
-    book_publisher: book_publisher,
-    book_cover_state: book_cover_state,
-    book_label_title: book_label_title,
-    book_label_color: book_label_color,
-    book_publish_date: book_publish_date
-  }
-
-  return unless File.exist?('./data/books.json')
-
-  file = File.open('./data/books.json')
-
-  if file.size.zero?
-    book = [obj]
-  else
-    book = JSON.parse(File.read('./data/books.json'))
-    book << obj
-  end
-
-  file.close
-
-  myfile = File.open('./data/books.json', 'w')
-  myfile.write(JSON.pretty_generate(book))
-  myfile.close
 end

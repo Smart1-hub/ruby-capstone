@@ -1,30 +1,34 @@
 require 'json'
-require 'fileutils'
-require_relative '../classes/author'
 
-class AuthorData
-  def initialize
-    @authors_path = 'data/authors.json'
-    File.write(@authors_path, []) unless File.exist?(@authors_path)
+module AuthorsController
+  def add_author(author)
+    File.new('./author/authors.json', 'w+') unless File.exist?('./author/authors.json')
+
+    if File.empty?('./author/authors.json')
+      authors = []
+    else
+      data = File.read('./author/authors.json').split
+      authors = JSON.parse(data.join)
+    end
+
+    authors.push({ id: author.id, first_name: author.first_name, last_name: author.last_name })
+
+    File.write('./author/authors.json', authors.to_json)
   end
 
-  def load_authors
-    loaded_authors = []
-    authors = JSON.parse(File.read(@authors_path))
-    authors.each do |author|
-      loaded_authors << Author.new(author['first_name'], author['last_name'])
-    end
-    loaded_authors
-  end
+  def list_authors
+    puts '-' * 50
+    File.new('./data/authors.json', 'w+') unless File.exist?('./author/authors.json')
 
-  def save_authors(authors)
-    saved_authors = []
-    authors.each do |_author|
-      saved_authors << {
-        first_name: first_name,
-        last_name: last_name
-      }
+    if File.empty?('./author/authors.json')
+      puts 'The authors list is empty'
+    else
+      data = File.read('./author/authors.json').split
+      authors = JSON.parse(data.join)
+      puts '🤵 Authors list:'
+      authors.each_with_index do |author, index|
+        puts "#{index + 1}-[Author] First name: #{author['first_name']} | Last name: #{author['last_name']}"
+      end
     end
-    File.write(@authors_path, JSON.generate(saved_authors))
   end
 end
