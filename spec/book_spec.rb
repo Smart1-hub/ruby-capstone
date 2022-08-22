@@ -1,11 +1,9 @@
-# ruboscop ig
-
 require './classes/book'
 require 'date'
 
 describe Book do
   before :each do
-    @book_one = Book.new 'Ademola', 'bad', '12-07-2000'
+    @book_one = Book.new 'Gideon', 'bad', '12-07-2000'
     @book_two = Book.new 'Joseph', 'good', '12-07-1995'
     @book_three = Book.new 'Felix', 'good', '12-07-2019'
     @book_four = Book.new 'Publisher', 'bad', '12-09-2004'

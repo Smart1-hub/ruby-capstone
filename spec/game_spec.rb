@@ -1,18 +1,19 @@
-require './classes/item'
 require './classes/game'
 require 'date'
 
 describe Game do
-  before(:all) do
-    @game = Game.new('17-08-2000', 'Yes', '17-08-2013')
+  before :each do
+    @game = Game.new('Ali', Date.parse('01-01-2018'), Date.parse('14-12-2018'))
   end
-
-  context 'When new Game is created' do
-    it 'Should be of Game instance' do
+  context 'When creating @game, an instance of class Game ' do
+    it 'takes four parameters and return a Game object' do
       expect(@game).to be_instance_of Game
     end
-    it 'Should be archived when older than 10 years and last_played > 2 years' do
-      expect(@game.can_be_archived?).to be_truthy
+  end
+
+  context 'When archiving a game' do
+    it 'archives the game' do
+      expect(@game.can_be_archived?).to eq(false)
     end
   end
 end

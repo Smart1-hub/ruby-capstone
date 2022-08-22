@@ -1,31 +1,45 @@
 require 'json'
-require 'fileutils'
 require_relative '../classes/game'
+require_relative '../classes/author'
 
-class GameData
-  def initialize
-    @games_path = 'data/games.json'
-    File.write(@games_path, []) unless File.exist?(@games_path)
-  end
+def load_manager(gamestore, authorstore) # rubocop:todo Metrics/MethodLength
+  storage = './data/games.json'
+  if File.exist?(storage)
+    file = File.open(storage)
 
-  def load_games
-    loaded_games = []
-    games = JSON.parse(File.read(@games_path))
-    games.each do |game|
-      loaded_games << Game.new(game['publish_date'], game['multiplayer'], game['last_played_at'])
+    if file.size.zero?
+      gamestore << []
+      authorstore << []
+    else
+      allstored = JSON.parse(File.read(storage))
+
+      allstored.each do |stored|
+        game = Game.new(stored['multiplayer'], stored['last_played_at'], stored['publish_date'])
+        author = Author.new(stored['author_firstname'], stored['author_lastname'])
+        gamestore << game
+        authorstore << author
+        author.add_items(game)
+      end
     end
-    loaded_games
+    file.close
+  else
+    gamestore << []
+    authorstore << []
+  end
+end
+
+def save_game(game)
+  File.new('./data/games.json', 'w+') unless File.exist?('./data/games.json')
+
+  if File.empty?('./data/games.json')
+    games = []
+  else
+    data = File.read('./data/games.json').split
+    games = JSON.parse(data.join)
   end
 
-  def save_games(games)
-    saved_games = []
-    games.each do |game|
-      saved_games << {
-        publish_date: game.publish_date,
-        multiplayer: game.multiplayer,
-        last_played_at: game.last_played_at
-      }
-    end
-    File.write(@games_path, JSON.generate(saved_games))
-  end
+  games.push({ 'multiplayer' => game.multiplayer, 'last_played_at' => game.last_played_at,
+               'publish_date' => game.publish_date, 'author_firstname' => game.author.first_name,
+               'author_lastname' => game.author.last_name })
+  File.write('./data/games.json', JSON.generate(games))
 end
